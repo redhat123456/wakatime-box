@@ -11,6 +11,7 @@ permissions:
 jobs:
   update-wakatime-gist:
     runs-on: ubuntu-latest
+    environment: Waka
 
     steps:
       - uses: actions/checkout@v6
