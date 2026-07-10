@@ -6,15 +6,21 @@ on:
     - cron: '10 3 * * *'
 
 permissions:
-  contents: read
+  contents: write
+  gist: write
+
 
 jobs:
   update-wakatime-gist:
+
     runs-on: ubuntu-latest
+
     environment: Waka
 
     steps:
-      - uses: actions/checkout@v6
+
+      - name: Checkout
+        uses: actions/checkout@v6
 
       - name: Update WakaTime Gist
         uses: abordage/wakatime-box@main
