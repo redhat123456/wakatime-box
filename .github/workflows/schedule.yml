@@ -5,28 +5,19 @@ on:
   schedule:
     - cron: '10 3 * * *'
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 permissions:
   contents: read
-
 
 jobs:
   update-wakatime-gist:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
-
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-        
-      - name: WakaTime Box
+      - uses: actions/checkout@v6
+
+      - name: Update WakaTime Gist
         uses: abordage/wakatime-box@main
         with:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GIST_ID: ${{ secrets.GIST_ID }}
           WAKA_API_KEY: ${{ secrets.WAKA_API_KEY }}
-
